@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EWS WEB</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(0, 128, 255);
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            margin-right: 0px;
+            top: 0;
+            z-index: 1000;
+            padding-right: 31px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.404);
+        }
+
+        .logo {
+            font-size: 24px;
+            padding-right: 40px;
+        }
+
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+            border: none;
+            margin-left: 100px;
+            /* Allow the search bar to grow and fill available space */
+        }
+
+        .search-bar input {
+            padding: 15px;
+            font-style: normal;
+            font-size: 15px;
+            /* Increased size */
+            border: none;
+            border-radius: 5px 0 0 5px;
+            width: 50%;
+            /* Fill available width */
+            transition: all 0.3s;
+            /* Smooth transition */
+            outline: none;
+        }
+
+        .search-bar input:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            /* Hover effect */
+        }
+
+        .search-bar button {
+            padding: 15px;
+            font-size: 15px;
+            /* Increased size */
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: rgb(0, 102, 204);
+            /* Slightly darker blue color */
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
+
+        .search-bar button:hover {
+            background-color: rgb(0, 80, 160);
+            /* Darker blue color on hover */
+        }
+
+        .course-menu {
+            display: flex;
+        }
+
+        .course-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            /* Increased size */
+            margin: 0 10px;
+            border-radius: 5px;
+            /* border: 1px solid #fff; */
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
+
+        .login {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            /* Increased size */
+            margin: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
+
+        .sign-up {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            /* Increased size */
+            margin: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
+
+        .cart {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            /* Increased size */
+            margin: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
+
+        .course-menu a:hover,
+        .user-actions a:hover {
+            background-color: rgb(0, 102, 204);
+            /* Slightly darker blue color on hover */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            /* margin-top: 500px; */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contact-info,
+        .quick-links,
+        .social-media {
+            flex: 1;
+        }
+
+        .contact-info h4,
+        .quick-links h4,
+        .social-media h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p,
+        .quick-links ul,
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .quick-links li {
+            margin-bottom: 5px;
+        }
+
+        .social-media img {
+            width: 30px;
+            /* Adjust the size of social media icons */
+            margin-right: 10px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+
+        .message-from-creator {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 20px 0;
+            color: #007BFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .button1 {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            margin-left: 10px;
+        }
+
+        .button1:hover {
+            background-color: #1c72c2
+        }
+
+        .button1:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .p1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: rgb(10, 35, 59);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-left: 10px;
+        }
+    </style>
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        .courseimages {
+            background-color: rgb(216, 242, 255);
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 4px;
+            margin-top: 50px;
+            opacity: 0.7;
+
+        }
+
+        .courseimages div {
+            display: inline-block;
+            transition: .5s ease;
+            border-radius: 25px;
+        }
+
+        .imghov:hover {
+            box-shadow: 0 0 0 10px #1984e7;
+            transition: .5s ease;
+        }
+
+        #image01 {
+            height: 200px;
+            width: 260px;
+            background-image: url(bca1.jpeg);
+            background-size: cover;
+            border: 2px solid black;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        #image02 {
+            height: 200px;
+            width: 235px;
+            background-image: url(ba3.jpeg);
+            background-size: cover;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        #image03 {
+            height: 200px;
+            width: 245px;
+            background-image: url(bsc4.jpeg);
+            background-size: cover;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        #image04 {
+            height: 200px;
+            width: 245px;
+            background-image: url(neet5.jpeg);
+            background-size: cover;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        #image05 {
+            height: 200px;
+            width: 235px;
+            background-image: url(jeemain2.jpeg);
+            background-size: cover;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+    </style>
+
+    <style>
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <style>
+        .glassbutton {
+            position: relative;
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: green;
+            background-image: linear-gradient(green, lightgreen);
+            text-decoration: none;
+            color: #fff;
+            font-size: 25px;
+            font-family: sans-serif;
+            font-weight: 100;
+            border-radius: 3px;
+            box-shadow: 0px 1px 4px -2px #333;
+            text-shadow: 0px -1px #333;
+        }
+
+
+
+        .mainbox {
+            text-align-last: center;
+            margin-bottom: 20px;
+        }
+
+        .mainbox2 {
+            text-align-last: center;
+        }
+
+        /* .mainbox3{
+                height: 300px;
+                width: 300px;
+                border-radius: 40px;
+                background: color #c1c1c1;;
+                box-shadow: 20px 20px 60px #00000080 , inset -20px -20px 60px #ffffff40;
+        } */
+
+
+        .mainbox5 {
+            position: relative;
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 25px;
+            font-family: sans-serif;
+            border-radius: 25px;
+            background: color #c1c1c1;
+            box-shadow: 20px 20px 60px #00000048, inset -20px -20px 60px #ffffff40;
+            margin-left: 45px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            text-decoration: none;
+
+        }
+
+        .mainbox3 {
+            position: relative;
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 25px;
+            font-family: sans-serif;
+            border-radius: 25px;
+            background: color #c1c1c1;
+            box-shadow: 20px 20px 60px #00000048, inset -20px -20px 60px #ffffff40;
+            margin-left: 60px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .div2 {
+            padding-top: 45px;
+        }
+    </style>
+
+    <style>
+        .feedback-box {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-form {
+            margin-top: 20px;
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .feedback-form button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+
+    <style>
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            color: #000;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #000;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <style>
+        .boardbox {
+            /* padding: 28px 8px 4px 28px; */
+            margin-right: 50px;
+            margin-left: 75px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .boardbox img {
+            padding: 10px 10px 10px 10PX;
+            border-radius: 50px;
+            box-shadow: 0px 0px 40px #00000048, inset -20px -20px 60px #ffffff40;
+            max-width: 100%;
+        }
+
+        .boardbox::after {
+            content: "UP COMING FEATURES";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(0, 0, 0, 0.404);
+            font-size: 90px;
+            font-weight: bold;
+            text-align: center;
+    
+        }
+    </style>
+
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Course Selling Website</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <header>
+
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="More.html" target="_blank">All Courses</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search Courses...">
+                <button type="button" onclick="searchCourses()">Search</button>
+            </div>
+
+            <nav class="course-menu">
+                <a href="ba.html" target="_blank">BA</a>
+                <a href="bca.html" target="_blank">BCA</a>
+                <a href="bsc.html" target="_blank">BSC</a>
+                <a href="NEET.html" target="_blank">NEET</a>
+                <a href="JEE.html" target="_blank">JEE</a>
+                <a href="More.html" target="_blank">More Courses</a>
+            </nav>
+
+            <div class="user-actions">
+                <a href="#" class="cart">Cart</a>
+                <a href="#" class="login">Login</a>
+                <a href="#" class="sign-up">Sign Up</a>
+            </div>
+
+        </header>
+
+        <div>
+            <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+        </div>
+
+        <body>
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
+
+        </body>
+
+        <div class="courseimages">
+            <div class="imghov" id="image01"></div>
+            <div class="imghov" id="image02"></div>
+            <div class="imghov" id="image03"></div>
+            <div class="imghov" id="image04"></div>
+            <div class="imghov" id="image05"></div>
+        </div>
+
+        <div class="div1">
+            <h1 style="padding-top: 30px;">
+                Popular Trending Material
+            </h1>
+        </div>
+
+        <div>
+            <a href=" #" class="mainbox5">University Quetion Paper</a>
+            <a href="#" class="mainbox5">Sample Quetion Paper</a>
+            <a href="#" class="mainbox5">Notes PDF</a>
+            <a href="#" class="mainbox5">Important Quetions</a>
+        </div>
+
+        <div class="div2">
+            <h1 style="font-size: 31px;">
+                Extra Study Material
+            </h1>
+        </div>
+
+
+        <div class="mainbox4">
+            <a href="#" class="mainbox3">Youtube Video Lectures</a>
+            <a href="#" class="mainbox3">Textbook PDF</a>
+            <a href="#" class="mainbox3">Codes & Programs</a>
+            <a href="#" class="mainbox3">Other Stuff.</a>
+        </div>
+
+        <!-- <div class="downloadbutton1">
+            <h2>Welcome to Our Course Selling Website</h2>
+            <a class="p1" style="color:rgb(32, 122, 2110)" href="downloads/example.pdf" target="_blank">
+                <button class="button1" type="button">Download</button>
+            </a>
+        </div> -->
+
+
+        <div class="boardbox">
+            <img src="Screenshot_1.jpg" alt="Boards">
+            <img src="Screenshot_2.jpg" alt="Exams">
+            <img src="Screenshot_13.jpg" alt="Subjects">
+        </div>
+
+        <div class="feedback-box">
+            <!-- Your feedback box content goes here -->
+            <h2>Feedback</h2>
+            <p>We would love to hear from you. Please share your feedback below.</p>
+            <div class="feedback-form">
+                <textarea id="feedback" name="feedback" rows="4" placeholder="Enter your feedback here..."></textarea>
+                <button type="submit">Submit Feedback</button>
+            </div>
+        </div>
+
+    </body>
+
+
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="contact-info">
+                <h4>Contact Us</h4>
+                <p>Email: chetanyt303@gmail.com</p>
+            </div>
+
+            <div class="quick-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div style="margin-right: 50px;" class="contact-info">
+                <h3>Privacy Policy</h3>
+                <p>If you have any questions or concerns about this Privacy Policy, please contact us at
+                    [chetanyt303@email.com].</p>
+            </div>
+
+            <div class="social-media">
+                <h4>Follow Us</h4>
+                <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="https://instagram.com/chetanrajput.it?igshid=YTQwZjQ0NmI0OA==" target="_blank"><img
+                        src="instagram-icon.png" alt="Instagram"></a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Course Selling Website. All rights reserved.</p>
+        </div>
+
+        <div class="message-from-creator">
+            <h2 style="color:rgb(104, 91, 91);">Message from the Creator</h2>
+            <p>First of all, thank you for visiting this website. I created this platform for education and study
+                materials to help students who are struggling to access study resources. I understand the challenges
+                faced during exam times, and I hope this website can make your learning journey easier. thank you .</p>
+        </div>
+
+        <div class="faq-container">
+
+            <h2>Frequently Asked Questions (FAQ)</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: What subjects are covered on this website?</div>
+                <div class="faq-answer">A: Our website covers a wide range of subjects, including but not limited to
+                    Mathematics, Science, Literature, and more. Explore our courses and study materials for a detailed
+                    list.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Are the study materials free to access?</div>
+                <div class="faq-answer">A: Yes, the majority of our study materials are available for free. However,
+                    there might be premium courses or content that requires a subscription or one-time payment.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: How can I contribute to the content?</div>
+                <div class="faq-answer">A: We welcome contributions! If you have educational content or study materials
+                    to share, please contact us through our "Contribute" page to discuss the details.</div>
+            </div>
+
+        </div>
+
+    </footer>
+
+    </html>
+
+    <script id="searchscrit">
+
+        function showCourse(course) {
+        }
+        function searchCourses() {
+            // Get the search input value
+            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            // Implement your search logic here
+            alert('Searching for: ' + searchTerm);
+            // For simplicity, let's just show an alert with the search term
+        }
+
+    </script>
+
+    <script id="sidenavscript">
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+    </script>
+
+    <script id="clickableimage">
+
+        const filePath = 'bca.html';
+        const image01 = document.getElementById('image01');
+        image01.addEventListener('click', function () {
+            window.open(filePath, '_blank');
+        });
+
+        const filePath1 = 'ba.html';
+        const image02 = document.getElementById('image02');
+        image02.addEventListener('click', function () {
+            window.open(filePath1, '_blank');
+        });
+
+        const filePath3 = 'bsc.html';
+        const image03 = document.getElementById('image03');
+        image03.addEventListener('click', function () {
+            window.open(filePath3, '_blank');
+        });
+
+        const filePath4 = 'neet.html';
+        const image04 = document.getElementById('image04');
+        image04.addEventListener('click', function () {
+            window.open(filePath4, '_blank');
+        });
+
+        const filePath5 = 'jee.html';
+        const image05 = document.getElementById('image05');
+        image05.addEventListener('click', function () {
+            window.open(filePath5, '_blank');
+        });
+
+    </script>
+
+
+
+    <script>
+        function showCourse(course) {
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        window.onscroll = function () {
+            var btn = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    </script>
+
+</body>
+
+</html>
